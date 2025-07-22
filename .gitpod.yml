@@ -1,0 +1,29 @@
+# Gitpod Configuration for OpenProject
+tasks:
+  - name: Setup OpenProject
+    command: |
+      echo "🚀 Starting OpenProject setup..."
+      echo "This will take 3-5 minutes, please wait..."
+      
+      # Start Docker services
+      docker-compose up -d
+      
+      echo "⏳ Waiting for services to start..."
+      sleep 60
+      
+      echo "✅ OpenProject should be ready!"
+      echo "🌐 Open port 3000 to access OpenProject"
+      echo "👤 Default login: admin / admin"
+
+ports:
+  - name: OpenProject
+    port: 3000
+    onOpen: notify
+    visibility: public
+
+# Pre-install required tools
+image: gitpod/workspace-full
+
+vscode:
+  extensions:
+    - ms-vscode.vscode-docker
